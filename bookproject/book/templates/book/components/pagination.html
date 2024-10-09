@@ -1,0 +1,23 @@
+{% if ranking_list.has_other_pages %}
+    <ul class="pagination m-0 d-flex justify-content-center align-items-center">
+    {% if ranking_list.has_previous %}
+      <li class="page-item"><a href="?page={{ ranking_list.previous_page_number }}">&lt;&lt;前へ</a></li>
+    {% else %}
+      <li class="page-item">&lt;&lt;前へ</li>
+    {% endif %}
+
+      {% for num in ranking_list.paginator.page_range %}
+        {% if num == ranking_list.number %}
+          <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+    {% if ranking_list.has_next %}
+      <li class="page-item"><a href="?page={{ ranking_list.next_page_number }}">次へ&gt;&gt;</a></li>
+    {% else %}
+      <li class="page-item">次へ&gt;&gt;</li>
+    {% endif %}
+    </ul>
+{% endif %}

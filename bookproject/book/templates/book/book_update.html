@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% comment 関数ベース用　%}<form method ="POST" action ="{% url 'create' %}">{% endcomment %}
+<form method ="POST" enctype = "maltipart/form-data" >
+    {{form.as_p}}{% csrf_token %}
+    <input type ="submit" value ="編集">
+<form>
+
+{% endblock %}
